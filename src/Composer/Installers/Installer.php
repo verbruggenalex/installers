@@ -118,7 +118,7 @@ class Installer extends LibraryInstaller
         }
 
         $this->initializeVendorDir();
-        $basePath = $vendorDir . DIRECTORY_SEPARATOR . $package->getPrettyName();
+        $basePath = $this->composer->getConfig()->get('vendor-dir') . DIRECTORY_SEPARATOR . $package->getPrettyName();
         $targetDir = $package->getTargetDir();
         return $basePath . ($targetDir ? '/' . $targetDir : '');
 

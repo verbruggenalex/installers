@@ -16,6 +16,7 @@ class Plugin implements PluginInterface
         $branch = trim(str_replace('* ', '', exec("git branch | grep '\*'")));
 
         $vendorDir = $baseDir . DIRECTORY_SEPARATOR . $destination . DIRECTORY_SEPARATOR . $branch . DIRECTORY_SEPARATOR .$
+        $this->composer->getConfig()->merge(['config' => ['vendor-dir' => $vendorDir]]);
         $composer->getConfig()->merge(['config' => ['vendor-dir' => $vendorDir]]);
 
         $installer = new Installer($io, $composer);

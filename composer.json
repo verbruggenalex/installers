@@ -90,8 +90,7 @@
     },
     "replace": {
         "shama/baton": "*",
-        "roundcube/plugin-installer": "*",
-        "composer/installers": "*"
+        "roundcube/plugin-installer": "*"
     },
     "require": {
         "composer-plugin-api": "^1.0"

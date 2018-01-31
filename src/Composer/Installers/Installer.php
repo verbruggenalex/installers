@@ -117,10 +117,16 @@ class Installer extends LibraryInstaller
             );
         }
 
-        $class = 'Composer\\Installers\\' . $this->supportedTypes[$frameworkType];
-        $installer = new $class($package, $this->composer, $this->getIO());
+        $this->initializeVendorDir();
+        $basePath = $vendorDir . DIRECTORY_SEPARATOR . $package->getPrettyName();
+        $targetDir = $package->getTargetDir();
+        return $basePath . ($targetDir ? '/' . $targetDir : '');
 
-        return $installer->getInstallPath($package, $frameworkType);
+
+        //$class = 'Composer\\Installers\\' . $this->supportedTypes[$frameworkType];
+        //$installer = new $class($package, $this->composer, $this->getIO());
+
+        //return $installer->getInstallPath($package, $frameworkType);
     }
 
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
